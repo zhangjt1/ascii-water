@@ -15,7 +15,7 @@ let points = [];
 let wave = [];
 const randScales = [];
 let maxNoise = 0;
-const res = 10;
+const res = 15;
 
 function setup(){
   createCanvas(windowWidth, windowHeight+200);
@@ -79,14 +79,14 @@ function setup(){
 function draw(){
   let frameIndex = frameCount % frmLen;
   background('#0827F5');
+  noStroke();
+  fill(255);
+  textSize(res);
+  textAlign(CENTER, CENTER);
   for (let i = 0; i < width; i += res) {
     for (let j = 0; j < height; j += res) {
       let index = i + j * width;
       let charIndex = wave[frameIndex][index];
-      noStroke();
-      fill(255);
-      textSize(res);
-      textAlign(CENTER, CENTER)
       text(density.charAt(charIndex), i, j);
     }
   }
