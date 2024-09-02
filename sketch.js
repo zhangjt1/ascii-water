@@ -13,7 +13,8 @@ const frmLen = 120;
 let initPoints = [];
 let points = [];
 let wave = [];
-const randScales = [];
+const randScalesX = [];
+const randScalesY = [];
 let maxNoise = 0;
 const res = 15;
 
@@ -35,7 +36,8 @@ function setup(){
       let pX = 50*sin(f*360/frmLen+6*initPoints[i].x)+initPoints[i].x;
       let pY = 50*cos(f*360/frmLen+6*initPoints[i].y)+initPoints[i].y;
       points[f].push(createVector(pX, pY));
-      randScales.push(random(0.4, 2));
+      randScalesX.push(random(0.5, 2));
+      randScalesY.push(random(0.5, 2));
     }
   }
 
@@ -47,7 +49,7 @@ function setup(){
         let distances = [];
 
         for(let i = 0; i < points[f].length; i++){
-          let d = ((x-points[f][i].x)**2)/randScales[i]+((y-points[f][i].y)**2);
+          let d = ((x-points[f][i].x)**2)/randScalesX[i]+((y-points[f][i].y)**2)/randScalesY[i];
           distances[i] = d;
         }
 
